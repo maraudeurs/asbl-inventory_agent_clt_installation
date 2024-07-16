@@ -1,0 +1,25 @@
+---
+###################################################
+## asbl-inventory_agent_clt_installation role vars
+###################################################
+
+## root username (default is root)
+root_user: root
+
+## user to run this playbook
+inventory_agent_clt_scripts_user: "{{ root_user }}"
+
+## ==================
+## inventory_agent_clt_docker vars
+inventory_agent_clt_force_raw_usage: true
+inventory_agent_clt_image: "inventory_agent_clt:latest"
+
+## ==================
+## "inventory_agent_client_install.sh" vars
+inventory_agent_clt_packages_requirement_list:
+  - git
+  - python3
+  - python3-venv
+  - python3-pip
+
+inventory_agent_clt_local_dir: "/opt/webdrone/infra_scripts/inventory_scripts"

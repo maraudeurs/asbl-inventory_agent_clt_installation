@@ -1,0 +1,19 @@
+galaxy_info:
+  role_name: github_client_configuration
+  author: infrastructure
+  description: ansible playbook role to set github ssh config
+  company: webdrone
+  license: license GPL-3.0-only
+  min_ansible_version: 2.14.1
+
+collections:
+  - community.crypto
+
+## make sure github_client is configured to have access to private repository
+# dependencies:
+#   - role: github_client_configuration
+#     vars:
+#       ## github credentials vars
+#       github_client_configuration_github_user: "your_github_username"
+#       github_client_configuration_github_token: "your_github_token"
+#       github_client_configuration_github_repo: "git@github.com:your_github_username/your_repo.git"

@@ -1,0 +1,46 @@
+---
+# Description : inventory_agent_clt_installation installation without docker container
+# file : _inventory_agent_clt_raw.yml
+
+## install required packages
+- name: Install required packages
+  ansible.builtin.include_role:
+    name: apt_packages_install
+  vars:
+    apt_source_package_list: "{{ inventory_agent_clt_packages_requirement_list }}"
+    apt_repo_purge: false
+
+## validate repository path
+- name: Make sure distant script dir exist
+  ansible.builtin.file:
+    path: "{{ inventory_agent_clt_local_dir }}"
+    state: directory
+    mode: '0755'
+
+## git clone inventory_agent_clt
+- name: Clone inventory_agent_clt locally
+  ansible.builtin.git:
+    repo: https://github.com/maraudeurs/srv-inventory_agent_clt.git
+    dest: "{{ inventory_agent_clt_local_dir }}"
+
+## set systemd usage
+- name: Send systemctl service config file to srv
+  ansible.builtin.template:
+    src: inventory_agent_clt.service.j2
+    dest: /etc/systemd/system/inventory_agent_clt.service
+    owner: bin
+    group: wheel
+    mode: '0644'
+    notify: reload systemctl config
+
+- name: Enable inventory_agent_clt service
+  ansible.builtin.systemd_service:
+    name: inventory_agent_clt.service
+    enabled: true
+    masked: no
+
+## start main script
+- name: Start inventory_agent_clt service now
+  ansible.builtin.systemd_service:
+    name: inventory_agent_clt.service
+    state: started

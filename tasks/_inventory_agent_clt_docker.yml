@@ -1,0 +1,7 @@
+---
+# Description : inventory_agent_clt_installation installation through docker container
+# file : _inventory_agent_clt_docker.yml
+
+
+# docker pull image
+# generate docker-compose

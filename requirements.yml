@@ -1,0 +1,24 @@
+roles:
+  - name: github_client_configuration
+    scm: git
+    src: git@github.com:webdrone-infra/asbl-github_client_configuration
+    version: main
+
+  - name: iam_linux
+    scm: git
+    src: git@github.com:webdrone-infra/asbl-iam_linux
+    version: main
+
+  - name: apt_packages_install
+    scm: git
+    src: git@github.com:webdrone-infra/asbl-apt_packages_install
+    version: main
+
+  # - name: apt_packages_install
+  #   scm: git
+  #   src: git@github.com:webdrone-infra/asbl-apt_packages_install
+  #   version: main
+
+collections:
+  - name: community.general
+  - name: community.crypto

@@ -1,0 +1,42 @@
+---
+# Description : main task file that install inventory_agent_clt_installation
+# file : main.yml
+
+- name: Set deploy method
+  block:
+
+  - name: Check Docker installed
+    command: docker --version
+    register: docker_check
+    ignore_errors: true
+
+  - name: Set Docker installed fact
+    set_fact:
+      docker_installed: "{{ docker_check.rc == 0 }}"
+
+  - name: Check Docker service status
+    command: systemctl is-active --quiet docker
+    register: docker_service_status
+    ignore_errors: true
+
+  - name: Set Docker deploy method fact to docker
+    set_fact:
+      docker_deploy_method: "docker"
+    when: docker_installed and docker_service_status and not force_raw_usage
+
+  - name: Set Docker deploy method fact to raw
+    set_fact:
+      docker_deploy_method: "raw"
+    when: (not docker_installed and not docker_service_status) or force_raw_usage
+
+- import_tasks: _inventory_agent_clt_docker.yml
+  become: true
+  become_user: "{{ root_user }}"
+  tags: [_inventory_agent_clt_docker]
+  when: docker_deploy_method == 'docker'
+
+- import_tasks: _inventory_agent_clt_raw.yml
+  become: true
+  become_user: "{{ root_user }}"
+  tags: [_inventory_agent_clt_raw]
+  when: docker_deploy_method == 'raw'

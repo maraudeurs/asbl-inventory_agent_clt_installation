@@ -1,0 +1,9 @@
+---
+
+- name: Configure docker-volume-backup
+  hosts: all
+  roles:
+    - role: inventory_agent_clt_installation
+      become: true
+      become_user: "{{ backup_dvb_user }}"
+      tags: [inventory_agent_clt_installation]
