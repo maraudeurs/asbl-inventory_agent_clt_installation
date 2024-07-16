@@ -22,12 +22,12 @@
   - name: Set Docker deploy method fact to docker
     set_fact:
       docker_deploy_method: "docker"
-    when: docker_installed and docker_service_status and not force_raw_usage
+    when: docker_installed and docker_service_status and not inventory_agent_clt_force_raw_usage
 
   - name: Set Docker deploy method fact to raw
     set_fact:
       docker_deploy_method: "raw"
-    when: (not docker_installed and not docker_service_status) or force_raw_usage
+    when: (not docker_installed and not docker_service_status) or inventory_agent_clt_force_raw_usage
 
 - import_tasks: _inventory_agent_clt_docker.yml
   become: true

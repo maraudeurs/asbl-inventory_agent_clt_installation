@@ -14,10 +14,10 @@ roles:
     src: git@github.com:webdrone-infra/asbl-apt_packages_install
     version: main
 
-  # - name: apt_packages_install
-  #   scm: git
-  #   src: git@github.com:webdrone-infra/asbl-apt_packages_install
-  #   version: main
+  - name: inventory_agent_clt_installation
+    scm: git
+    src: git@github.com:maraudeurs/asbl-inventory_agent_clt_installation
+    version: main
 
 collections:
   - name: community.general
