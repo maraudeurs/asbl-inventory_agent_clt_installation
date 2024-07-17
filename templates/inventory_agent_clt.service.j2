@@ -3,7 +3,7 @@ Description=inventory_agent_clt python service
 After=network.target
 
 [Service]
-ExecStart={{inventory_agent_clt_local_dir}}/srv-inventory_agent_clt/main.py
+ExecStart={{inventory_agent_clt_local_dir}}/app/main.py
 Restart=always
 User={{inventory_agent_clt_scripts_user}}
 Group=nogroup
