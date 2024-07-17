@@ -31,7 +31,7 @@
     owner: bin
     group: wheel
     mode: '0644'
-    notify: reload systemctl config
+  notify: reload systemctl config
 
 - name: Enable inventory_agent_clt service
   ansible.builtin.systemd_service:
