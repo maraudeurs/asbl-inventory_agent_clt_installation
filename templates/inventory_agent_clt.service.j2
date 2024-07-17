@@ -3,7 +3,7 @@ Description=inventory_agent_clt python service
 After=network.target
 
 [Service]
-Environment="PATH={{ inventory_agent_clt_venv_path }}bin"
+Environment="PATH={{ inventory_agent_clt_venv_path }}/bin"
 ExecStart={{ inventory_agent_clt_venv_path }}/bin/python {{ inventory_agent_clt_python_folder_path }}/main.py
 Restart=always
 User={{inventory_agent_clt_scripts_user}}

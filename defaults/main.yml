@@ -26,3 +26,14 @@ inventory_agent_clt_packages_requirement_list:
 inventory_agent_clt_local_dir: "/opt/webdrone/infra_scripts/inventory_scripts"
 inventory_agent_clt_python_folder_path: "{{ inventory_agent_clt_local_dir }}/app"
 inventory_agent_clt_venv_path: "{{ inventory_agent_clt_python_folder_path }}/venv"
+
+## ==================
+## inventory_agent_clt_ python app env vars
+# inventory_agent_clt_server_url: "inventory_agent_srv_address"
+# inventory_agent_clt_discovery_generic_user: "discovery_user"
+# inventory_agent_clt_discovery_generic_password: "discovery_password"
+inventory_agent_clt_log_level: DEBUG
+## stdout or file
+inventory_agent_clt_log_output: stdout
+inventory_agent_clt_log_file: /var/log/srv_inventory_clt.log
+inventory_agent_clt_job_schedule_hour: "00:00"
