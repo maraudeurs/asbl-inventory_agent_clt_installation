@@ -28,8 +28,8 @@
   ansible.builtin.template:
     src: inventory_agent_clt.service.j2
     dest: /etc/systemd/system/inventory_agent_clt.service
-    owner: bin
-    group: wheel
+    owner: "{{ inventory_agent_clt_scripts_user }}"
+    group: "{{ inventory_agent_clt_scripts_group }}"
     mode: '0644'
   notify: reload systemctl config
 

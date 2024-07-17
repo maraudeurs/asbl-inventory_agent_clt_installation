@@ -4,10 +4,11 @@
 ###################################################
 
 ## root username (default is root)
-root_user: root
+root_user: "root"
 
 ## user to run this playbook
 inventory_agent_clt_scripts_user: "{{ root_user }}"
+inventory_agent_clt_scripts_group: "root"
 
 ## ==================
 ## inventory_agent_clt_docker vars
