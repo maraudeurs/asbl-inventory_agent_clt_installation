@@ -22,6 +22,7 @@
   ansible.builtin.git:
     repo: https://github.com/maraudeurs/srv-inventory_agent_clt.git
     dest: "{{ inventory_agent_clt_local_dir }}"
+    force: true
 
 - name: Make sure that main script is executable
   ansible.builtin.file:
