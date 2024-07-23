@@ -48,6 +48,15 @@
     requirements: "{{ inventory_agent_clt_local_dir }}/requirements.txt"
     virtualenv: "{{ inventory_agent_clt_venv_path }}"
 
+## create .env file
+- name: Create .env file for scripts secrets
+  ansible.builtin.template:
+    src: inventory_agent_clt.env.j2
+    dest: "{{ inventory_agent_clt_python_folder_path }}/.env"
+    owner: "{{ inventory_agent_clt_scripts_user }}"
+    group: "{{ inventory_agent_clt_scripts_group }}"
+    mode: '0744'
+
 ## set systemd usage
 - name: Send systemctl service config file to srv
   ansible.builtin.template:
